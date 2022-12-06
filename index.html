@@ -1460,6 +1460,7 @@ p.nominalBounds = new cjs.Rectangle(-1500,-1500,3000,3000);
 		var soldierBtn = main.buttons.soldiers;
 		var upgradeBtn = main.buttons.upgrade;
 		var weaponBtn = main.buttons.improve;
+		playnowBtn = main.playnow;
 		soldierBtn.clickable = true;
 		upgradeBtn.clickable = false;
 		weaponBtn.clickable = false;
@@ -1525,6 +1526,9 @@ p.nominalBounds = new cjs.Rectangle(-1500,-1500,3000,3000);
 			resizeCanvas(canvas, ctx, document.documentElement.clientWidth, document.documentElement.clientHeight);
 		}
 		onResize();
+
+		playnowBtn.addEventListener('click', callToAction);
+
 		function callToAction() {
 			btnSFX.play();
 			window.open();
