@@ -1299,13 +1299,6 @@ p.nominalBounds = new cjs.Rectangle(-527.4,-501.4,1024,1024);
 		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
 	}
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(240).to({_off:false},0).to({scaleX:1,scaleY:1,x:-197.2,y:-122.4},25,cjs.Ease.cubicOut).wait(5));
-	// packshot
-	this.instance_1 = new lib.game_name();
-	this.instance_1.parent = this;
-	this.instance_1.setTransform(-230.6,-76.4);
-	this.instance_1.alpha = 0;
-	this.instance_1._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(250).to({_off:false},0).to({x:182.8,y:-103.7,alpha:1},18,cjs.Ease.cubicOut).wait(2));
 	// button
 	this.playnow = new lib.endcard_btn();
 	this.playnow.name = "playnow";
@@ -1316,8 +1309,19 @@ p.nominalBounds = new cjs.Rectangle(-527.4,-501.4,1024,1024);
 	this.endcard_btn.parent = this;
 	this.endcard_btn.setTransform(-12,632.8,1,1,0,0,0,-0.1,-0.5);
 	this.endcard_btn._off = true;
+	var maskedShapeInstanceList = [this.playnow,this.endcard_btn];
+	for(var shapedInstanceItr = 0; shapedInstanceItr < maskedShapeInstanceList.length; shapedInstanceItr++) {
+		maskedShapeInstanceList[shapedInstanceItr].mask = mask;
+	}
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.playnow}]}).to({state:[{t:this.endcard_btn}]},244).to({state:[{t:this.endcard_btn}]},22).wait(4));
 	this.timeline.addTween(cjs.Tween.get(this.endcard_btn).wait(244).to({_off:false},0).to({x:-2.2,y:299.6},22,cjs.Ease.backOut).wait(4));
+	// packshot
+	this.instance_1 = new lib.game_name();
+	this.instance_1.parent = this;
+	this.instance_1.setTransform(-230.6,-76.4);
+	this.instance_1.alpha = 0;
+	this.instance_1._off = true;
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(250).to({_off:false},0).to({x:182.8,y:-103.7,alpha:1},18,cjs.Ease.cubicOut).wait(2));
 	// blured
 	this.instance_2 = new lib.blured_overlay();
 	this.instance_2.parent = this;
@@ -1505,6 +1509,7 @@ p.nominalBounds = new cjs.Rectangle(-1500,-1500,3000,3000);
 		upgradeBtn.addEventListener('click', upgradeClick);
 		weaponBtn.addEventListener('click', weaponClick);
 		function soldierClick() {
+			musicBG.play();
 			btnSFX.play();
 			main.gotoAndPlay(1); // recruit soldiers
 			upgradeSFX.play();
@@ -1608,8 +1613,8 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"index_atlas_P_.png?1670319830502", id:"index_atlas_P_"},
-		{src:"index_atlas_NP_.jpg?1670319830503", id:"index_atlas_NP_"}
+		{src:"index_atlas_P_.png?1670320069545", id:"index_atlas_P_"},
+		{src:"index_atlas_NP_.jpg?1670320069545", id:"index_atlas_NP_"}
 	],
 	preloads: []
 };
@@ -1695,7 +1700,7 @@ function handleComplete(evt,comp) {
 	//Code to support hidpi screens and responsive scaling.
 	function makeResponsive(isResp, respDim, isScale, scaleType) {		
 		var lastW, lastH, lastS=1;		
-			function resizeCanvas() {			
+		function resizeCanvas() {			
 			var w = lib.properties.width, h = lib.properties.height;			
 			var iw = window.innerWidth, ih=window.innerHeight;			
 			var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
